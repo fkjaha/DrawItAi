@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using Unity.Sentis;
@@ -9,6 +8,7 @@ using UnityEngine.UI;
 public class GuessEngine : MonoBehaviour
 {
     public Dictionary<int, string> GetAnswersDictionary => answersDictionary;
+    public string GetModelName => onnxModel.name;
     
     [Header("Model")]
     [SerializeField] private ModelAsset onnxModel;
@@ -149,32 +149,4 @@ public class GuessEngine : MonoBehaviour
         engine?.Dispose();
         ops?.Dispose();
     }
-}
-
-public class StatsCalculator : MonoBehaviour
-{
-    [SerializeField] private List<DatasetTexture> datasetTextures;
-    [SerializeField] private List<GuessEngine> enginesList;
-    
-    double CalculatePrecision(int tp, int fp)
-    {
-        return tp / (double)(tp + fp);
-    }
-
-    double CalculateRecall(int tp, int fn)
-    {
-        return tp / (double)(tp + fn);
-    }
-
-    double CalculateF1(double precision, double recall)
-    {
-        return 2 * (precision * recall) / (precision + recall);
-    }
-}
-
-[Serializable]
-public class DatasetTexture
-{
-    public Texture2D texture;
-    public int rightAnswerIndex;
 }
