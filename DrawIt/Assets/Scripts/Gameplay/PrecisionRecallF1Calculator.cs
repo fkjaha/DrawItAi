@@ -20,6 +20,7 @@ public class PrecisionRecallF1Calculator : MonoBehaviour
     {
         List<float> precisions = new();
         List<float> recalls = new();
+        DateTime startTime = DateTime.Now;
         foreach (PositivesNegativesDatasetElement datasetElement in datasetElements)
         {
             int truePositives = 0;
@@ -42,27 +43,39 @@ public class PrecisionRecallF1Calculator : MonoBehaviour
             
             precisions.Add(CalculatePrecision(truePositives, falsePositives));
             recalls.Add(CalculateRecall(truePositives, falseNegatives));
+            
+            // Debug.Log($"Engine: {engine.GetModelName} | {datasetElement.groupIndex} Group Index | {truePositives} TP | {trueNegatives} TN | {falsePositives} FP | {falseNegatives} FN");
         }
 
         float averagePrecision = precisions.Average();
         float averageRecall = recalls.Average();
         float f1 = CalculateF1(averagePrecision, averageRecall);
-        Debug.Log($"Engine: {engine.GetModelName} | {f1} F1 | {averagePrecision} P | {averageRecall} R");
+        int timeToCalculate = (DateTime.Now - startTime).Milliseconds;
+        Debug.Log($"Engine: {engine.GetModelName} | {timeToCalculate} TTC | {f1} F1 | {averagePrecision} P | {averageRecall} R");
     }
     
     private float CalculatePrecision(int tp, int fp)
     {
-        return tp / (float)(tp + fp);
+        // Debug.Log($"Calculating Precision {tp}/{tp + fp}");
+        float divider = tp + fp;
+        if (divider == 0) return 0;
+        return tp / divider;
     }
     
     private float CalculateRecall(int tp, int fn)
     {
-        return tp / (float)(tp + fn);
+        // Debug.Log($"Calculating Recall {tp}/{tp + fn}");
+        float divider = tp + fn;
+        if (divider == 0) return 0;
+        return tp / divider;
     }
     
     private float CalculateF1(float precision, float recall)
     {
-        return 2 * (precision * recall) / (precision + recall);
+        // Debug.Log($"F1 {precision}/{recall}");
+        float divider = precision + recall;
+        if (divider == 0) return 0;
+        return 2 * (precision * recall) / divider;
     }
 }
 
