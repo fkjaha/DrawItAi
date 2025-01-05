@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class StatsCalculator : MonoBehaviour
+public class AccuracyCalculator : MonoBehaviour
 {
     [SerializeField] private List<DatasetTexture> datasetTextures;
     [SerializeField] private List<GuessEngine> enginesList;
@@ -24,19 +24,4 @@ public class StatsCalculator : MonoBehaviour
         }
         Debug.Log($"Engine: {engine.GetModelName} | {(float)rightGuessCount/datasetTextures.Count} Accuracy Rate");
     }
-    
-    // double CalculatePrecision(int tp, int fp)
-    // {
-    //     return tp / (double)(tp + fp);
-    // }
-    //
-    // double CalculateRecall(int tp, int fn)
-    // {
-    //     return tp / (double)(tp + fn);
-    // }
-    //
-    // double CalculateF1(double precision, double recall)
-    // {
-    //     return 2 * (precision * recall) / (precision + recall);
-    // }
 }
