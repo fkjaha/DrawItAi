@@ -22,7 +22,7 @@ public class StatsCalculator : MonoBehaviour
             GuessData guessData = engine.TakeGuess(datasetTexture.texture);
             if (guessData.GetTopProbabilityIndex == datasetTexture.rightAnswerIndex) rightGuessCount++;
         }
-        Debug.Log($"Engine: {engine.GetModelName} | {rightGuessCount/datasetTextures.Count} Accuracy Rate");
+        Debug.Log($"Engine: {engine.GetModelName} | {(float)rightGuessCount/datasetTextures.Count} Accuracy Rate");
     }
     
     // double CalculatePrecision(int tp, int fp)

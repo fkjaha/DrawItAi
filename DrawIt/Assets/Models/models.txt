@@ -1,0 +1,5 @@
+1. quick draw 1 - https://huggingface.co/Xenova/quickdraw-mobilevit-small
+2. quick draw 2 - https://huggingface.co/JoshuaKelleyDs/quickdraw-MobileVITV2-2.0-Finetune/tree/main/onnx
+3. quick draw 4 - jerilseb/quickdraw-small
+quick draw 5 - JoshuaKelleyDs/quickdraw-ConvNeXT-Tiny-Finetune
+quick draw 6 - JoshuaKelleyDs/quickdraw-MobileVIT-xxs-finetune

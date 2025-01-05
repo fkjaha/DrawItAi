@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d91e40fb49f458bbc7b0b25933fbbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onnxModel: {fileID: 5022602860645237092, guid: d4ad9d59e40f68747bcb1ae0aa71817c,
+  onnxModel: {fileID: 5022602860645237092, guid: a7d0c52560b1eae4f94ad03837457afd,
     type: 3}
   inputImage: {fileID: 0}
   resizeImage: 1
@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d91e40fb49f458bbc7b0b25933fbbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onnxModel: {fileID: 5022602860645237092, guid: 82f6dba39b6c6b440adcf2ef2092ca57,
+  onnxModel: {fileID: 5022602860645237092, guid: db0e96b57478e634f8cf669ac65ee49d,
     type: 3}
   inputImage: {fileID: 0}
   resizeImage: 1
