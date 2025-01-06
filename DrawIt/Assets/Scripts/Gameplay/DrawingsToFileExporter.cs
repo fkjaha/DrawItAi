@@ -19,8 +19,9 @@ public class DrawingsToFileExporter : MonoBehaviour
         
         File.WriteAllBytes(localPath, bytes);
         Debug.Log("Saved to file: " + localPath);
+        #if UNITY_EDITOR
         AssetDatabase.Refresh();
-        
+        #endif
         _lastImageIndex++;
         PlayerPrefs.SetInt(_saveKey, _lastImageIndex);
     }

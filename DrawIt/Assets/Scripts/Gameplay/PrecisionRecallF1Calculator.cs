@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class PrecisionRecallF1Calculator : MonoBehaviour
 {
     [SerializeField] private List<PositivesNegativesDatasetElement> datasetElements;
     [SerializeField] private List<GuessEngine> enginesList;
+    [SerializeField] private TMP_Text outputText;
     
     public void CalculateEnginesStats()
     {
+        if (outputText != null) outputText.text = "";
+
         foreach (GuessEngine guessEngine in enginesList)
         {
             GetEngineStats(guessEngine);
@@ -51,7 +55,11 @@ public class PrecisionRecallF1Calculator : MonoBehaviour
         float averageRecall = recalls.Average();
         float f1 = CalculateF1(averagePrecision, averageRecall);
         int timeToCalculate = (DateTime.Now - startTime).Milliseconds;
-        Debug.Log($"Engine: {engine.GetModelName} | {timeToCalculate} TTC | {f1} F1 | {averagePrecision} P | {averageRecall} R");
+        
+        string resultText =
+            $"Engine: {engine.GetModelName} | {timeToCalculate} TTC | {f1} F1 | {averagePrecision} P | {averageRecall} R"; 
+        Debug.Log(resultText);
+        if (outputText != null) outputText.text += $"\n \n{resultText}";
     }
     
     private float CalculatePrecision(int tp, int fp)
