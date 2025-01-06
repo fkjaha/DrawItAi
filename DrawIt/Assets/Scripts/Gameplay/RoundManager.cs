@@ -47,6 +47,7 @@ public class RoundManager : MonoBehaviour
         _roundTimeLeft = roundTime;
         _roundCountdownTimeLeft = roundCountdownTime;
         OnCountdownRoundStartedEvent?.Invoke();
+        drawingCanvas.ClearCanvas();
         
         OnRoundCountdownTimeUpdatedEvent?.Invoke();
         
@@ -54,6 +55,7 @@ public class RoundManager : MonoBehaviour
         
         _roundActive = true;
         OnRoundStartedEvent?.Invoke();
+        drawingCanvas.ClearCanvas();
         // start round
 
         OnRoundTimeUpdatedEvent?.Invoke();

@@ -14,7 +14,7 @@ public class RoundManagerUi : MonoBehaviour
     private void Awake()
     {
         roundManager.OnCountdownRoundStartedEvent += ShowCountdownUI;
-        roundManager.OnRoundStartedEvent += HideCountdownUI;
+        roundManager.OnRoundStartedEvent += ShowRoundUi;
         roundManager.OnRoundFinishedEvent += ShowResultUi;
         roundManager.OnRoundCountdownTimeUpdatedEvent += UpdateRoundCountdownUI;
         roundManager.OnRoundTimeUpdatedEvent += UpdateRoundTimeUi;
@@ -28,11 +28,14 @@ public class RoundManagerUi : MonoBehaviour
     private void ShowCountdownUI()
     {
         countdownUI.SetActive(true);
+        resultUi.SetActive(false);
     }
 
-    private void HideCountdownUI()
+    private void ShowRoundUi()
     {
+        Debug.Log("Round started");
         countdownUI.SetActive(false);
+        resultUi.SetActive(false);
     }
 
     private void UpdateRoundCountdownUI()
