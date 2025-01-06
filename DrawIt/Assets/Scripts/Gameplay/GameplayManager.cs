@@ -9,9 +9,12 @@ public class GameplayManager : MonoBehaviour
 {
     public event UnityAction OnGameStartedEvent;
     public event UnityAction OnGameFinishedEvent;
+    public event UnityAction OnRoundUpdatedEvent;
     
     public List<GameplayRound> GetRounds => _rounds;
-    
+    public int GetNumberOfRounds => numberOfRounds;
+    public int GetRoundNumber => _roundNumber;
+
     [SerializeField] private int numberOfRounds;
     [SerializeField] private RoundManager roundManager;
 
@@ -19,6 +22,7 @@ public class GameplayManager : MonoBehaviour
     private bool _roundFinished;
     private bool _continuePressed;
     private List<GameplayRound> _rounds = new();
+    private int _roundNumber;
     
     private void Awake()
     {
@@ -35,15 +39,17 @@ public class GameplayManager : MonoBehaviour
 
     private IEnumerator GameRoutine()
     {
-        int roundNumber = 0;
-        while (roundNumber < numberOfRounds)
+        _roundNumber = 0;
+        OnRoundUpdatedEvent?.Invoke();
+        while (_roundNumber < numberOfRounds)
         {
             _roundFinished = false;
             _continuePressed = false;
             roundManager.StartGame();
             yield return new WaitUntil(() => _roundFinished);
             yield return new WaitUntil(() => _continuePressed);
-            roundNumber++;
+            _roundNumber++;
+            OnRoundUpdatedEvent?.Invoke();
             _rounds.Add(roundManager.GetActiveRound);
         }
         _gameActive = false;

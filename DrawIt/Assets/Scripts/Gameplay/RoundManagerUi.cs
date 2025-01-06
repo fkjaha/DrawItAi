@@ -40,11 +40,11 @@ public class RoundManagerUi : MonoBehaviour
 
     private void UpdateRoundCountdownUI()
     {
-        roundCountdownText.text = $"{(int)roundManager.GetRoundCountdownTimeLeft}";
+        roundCountdownText.text = $"{(int)roundManager.GetRoundCountdownTimeLeft + 1}";
     }
 
     private void UpdateRoundTimeUi()
     {
-        roundTimeText.text = $"{(int)roundManager.GetRoundTimeLeft}";
+        roundTimeText.text = $"{(int)roundManager.GetRoundTimeLeft + 1}";
     }
 }

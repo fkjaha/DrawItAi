@@ -10,8 +10,8 @@ public class GameResultRoundSlot : MonoBehaviour
 
     public void UpdateUi(GameplayRound round)
     {
-        expectedDrawingTitle.text = $"Requested: {round.GetExpectedDrawingName}";
-        aiGuessTitle.text = $"AI guess: {round.GetGuessData.GetResultItem}";
+        expectedDrawingTitle.text = $"Requested: \n{round.GetExpectedDrawingName}";
+        aiGuessTitle.text = $"AI guess: \n{round.GetGuessData.GetResultItem}";
         resultImage.texture = round.GetResultTexture;
     }
 }
